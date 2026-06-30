@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/posts';
+const url = import.meta.env.REACT_APP_API_URL 
+    ? `${import.meta.env.REACT_APP_API_URL}/posts`  
+           : 'http://localhost:5000/posts';
 
 export const fetchPosts = () => axios.get(url);
 export const createPost = (newPost) => axios.post(url, newPost);

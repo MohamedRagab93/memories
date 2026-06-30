@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-const url = process.env.REACT_APP_API_URL 
-    ? `${process.env.REACT_APP_API_URL}/posts`  
-           : 'http://localhost:5000/posts';
+// const url = process.env.REACT_APP_API_URL 
+//     ? `${process.env.REACT_APP_API_URL}/posts`  
+//            : 'http://localhost:5000/posts';
+
+const url = 'https://memories-production-a2ec.up.railway.app/posts';
 
 export const fetchPosts = () => axios.get(url);
 export const createPost = (newPost) => axios.post(url, newPost);

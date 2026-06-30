@@ -7,21 +7,26 @@ import postRoutes from './routes/posts.js';
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://memories-woad-six.vercel.app'
+  'https://memories-woad-six.vercel.app',
+  'https://memories-lnse819tc-mohamed-ragabs-projects-0fee0ecc.vercel.app'
+  // أضف أي رابط Vercel جديد يظهر
 ];
-
 const app = express();
 dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors({ origin: function (origin, callback) {
-  if (!origin || allowedOrigins.includes(origin)) {
-    callback(null, true);
-  } else {
-    callback(new Error('Not allowed by CORS'))
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || 
+        origin.includes('localhost') || 
+        origin.includes('vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
   }
-} }));
+}));
 
 app.use('/posts', postRoutes);
 

@@ -5,12 +5,23 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://memories-woad-six.vercel.app'
+];
+
 const app = express();
 dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors({ origin: 'https://memories-woad-six.vercel.app' }));
+app.use(cors({ origin: function (origin, callback) {
+  if (!origin || allowedOrigins.includes(origin)) {
+    callback(null, true);
+  } else {
+    callback(new Error('Not allowed by CORS'))
+  }
+} }));
 
 app.use('/posts', postRoutes);
 

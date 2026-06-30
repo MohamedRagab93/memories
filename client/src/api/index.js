@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const url = import.meta.env.REACT_APP_API_URL 
-    ? `${import.meta.env.REACT_APP_API_URL}/posts`  
+const url = process.env.REACT_APP_API_URL 
+    ? `${process.env.REACT_APP_API_URL}/posts`  
            : 'http://localhost:5000/posts';
 
 export const fetchPosts = () => axios.get(url);

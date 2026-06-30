@@ -10,7 +10,7 @@ dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors({ origin: 'https://memories-woad-six.vercel.app/' }));
+app.use(cors({ origin: 'https://memories-woad-six.vercel.app' }));
 
 app.use('/posts', postRoutes);
 

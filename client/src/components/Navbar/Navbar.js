@@ -4,7 +4,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import memories from '../../images/memories.png';
 import useStyles from './styles';
-import decode from 'jwt-decode';
+import { jwtDecode as decode } from 'jwt-decode';
 
 const Navbar = () => {
     const classes = useStyles();

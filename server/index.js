@@ -39,3 +39,5 @@ mongoose.connect(process.env.CONNECTION_URL)
   .catch((error) => console.log(error.message));
 
   
+
+  export default app;

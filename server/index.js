@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/user.js';
 
 const allowedOrigins = [
   'http://localhost:3000',
@@ -11,8 +12,8 @@ const allowedOrigins = [
   'https://memories-lnse819tc-mohamed-ragabs-projects-0fee0ecc.vercel.app'
   // أضف أي رابط Vercel جديد يظهر
 ];
-const app = express();
 dotenv.config();
+const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -29,6 +30,7 @@ app.use(cors({
 }));
 
 app.use('/posts', postRoutes);
+app.use('/user', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 
